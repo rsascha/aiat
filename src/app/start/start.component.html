@@ -1,0 +1,26 @@
+<div [ngSwitch]="currentView">
+
+    <div *ngSwitchDefault>
+        <p>Du stehst im Wald auf einer Lichtung.</p>
+        <p>Was möchtest du tun?</p>
+
+        <div *ngIf="displayView">
+            <p>Du stehst auf einer Lichtung und du siehst Bäume.</p>
+        </div>
+
+        <div>
+            <button (click)="view()">umschauen</button>
+            <button (click)="goNorth()">gehe nach Norden</button>
+            <button (click)="goSouth()">gehe nach Süden</button>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="'north'">
+        <app-the-big-tree></app-the-big-tree>
+    </div>
+
+    <div *ngSwitchCase="'south'">
+        not implemented
+    </div>
+
+</div>

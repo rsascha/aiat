@@ -1,0 +1,12 @@
+<div [ngSwitch]="currentView">
+
+    <div *ngSwitchDefault>
+        <p>Willkommen zum Abenteuer im Ahrtal</p>
+        <button (click)="start()">Spiel starten</button>
+    </div>
+
+    <div *ngSwitchCase="'start'">
+        <app-start></app-start>
+    </div>
+
+</div>

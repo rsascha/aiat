@@ -1,0 +1,32 @@
+<div [ngSwitch]="currentView">
+
+    <div *ngSwitchDefault>
+        <p>Du stehst im Wald vor einem großen Baum.</p>
+        <p>Was möchtest du tun?</p>
+
+        <div *ngIf="displayView">
+            <p>Der Baum ist schön.</p>
+        </div>
+
+        <div>
+            <button (click)="view()">umschauen</button>
+        </div>
+
+        <div>
+            <input type="radio" #selectedWantToDo name="want-to-do" value="analyse" checked>
+            <label for="analyse">untersuche</label>
+        </div>
+
+        <div>
+            <input type="radio" #selectedObject name="object" value="tree" checked>
+            <label for="object">Baum</label>
+        </div>
+
+        <div>
+            <button (click)="perform(selectedWantToDo.value, selectedObject.value)">ok</button>
+        </div>
+
+
+    </div>
+
+</div>
