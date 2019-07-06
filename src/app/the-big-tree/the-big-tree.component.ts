@@ -9,6 +9,7 @@ export class TheBigTreeComponent implements OnInit {
 
     displayView = false;
     currentView: string;
+    displayAnalyseTreeResult = false;
 
     constructor() { }
 
@@ -19,8 +20,9 @@ export class TheBigTreeComponent implements OnInit {
         this.displayView = true;
     }
 
-    perform(analyse: string, tree: string) {
-        console.log('perform: ', analyse, tree);
+    perform(wantToDo: string, object: string) {
+        console.log('perform: ', wantToDo, object);
+        this.displayAnalyseTreeResult = wantToDo == 'analyse' && object == 'tree';
 
     }
 }

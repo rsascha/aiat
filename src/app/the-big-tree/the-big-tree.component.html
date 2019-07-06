@@ -8,6 +8,10 @@
             <p>Der Baum ist schön.</p>
         </div>
 
+        <div *ngIf="displayAnalyseTreeResult">
+            <p>Ich sehe am Baum ein Astloch</p>
+        </div>
+
         <div>
             <button (click)="view()">umschauen</button>
         </div>
