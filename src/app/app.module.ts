@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { StartComponent } from './start/start.component';
 import { TheBigTreeComponent } from './the-big-tree/the-big-tree.component';
+import { ImgMapComponent } from './img-map/img-map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     StartComponent,
-    TheBigTreeComponent
+    TheBigTreeComponent,
+    ImgMapComponent
   ],
   imports: [
     BrowserModule,

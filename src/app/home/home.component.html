@@ -3,6 +3,14 @@
     <div *ngSwitchDefault>
         <p>Willkommen zum Abenteuer im Ahrtal</p>
         <button (click)="start()">Spiel starten</button>
+
+        <div>
+            <div>
+                <app-img-map #test src="http://placekitten.com/g/500/300" [markers]="[[25, 25], [50, 50], [75, 75]]">
+                </app-img-map>
+            </div>
+        </div>
+
     </div>
 
     <div *ngSwitchCase="'start'">

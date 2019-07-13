@@ -1,13 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { ImgMapComponent } from '../img-map/img-map.component';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
     currentView: string = "home";
+
+    @ViewChild('test', { static: false })
+    private test: ImgMapComponent;
 
     constructor() { }
 
@@ -17,5 +21,13 @@ export class HomeComponent implements OnInit {
     start() {
         this.currentView = "start"
     }
+
+    ngAfterViewInit(): void {
+        console.log('ngAfterViewInit');
+        this.test.onClick = (event) => {
+            console.log(event);
+        }
+    }
+
 
 }
