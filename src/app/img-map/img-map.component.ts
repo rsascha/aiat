@@ -36,12 +36,6 @@ export class ImgMapComponent implements OnInit, AfterViewInit {
     }
 
     /**
-     * Radius of the markers.
-     */
-    @Input()
-    markerRadius: number = 10;
-
-    /**
      * Image source URL.
      */
     @Input()
@@ -118,7 +112,7 @@ export class ImgMapComponent implements OnInit, AfterViewInit {
     private drawMarker(pixel: number[], type?: string): void {
         const context = this.canvas.nativeElement.getContext('2d');
         context.beginPath();
-        context.arc(pixel[0], pixel[1], this.markerRadius, 0, 2 * Math.PI);
+        context.fillRect(pixel[0], pixel[2], pixel[1] - pixel[0], pixel[3] - pixel[2]);
         switch (type) {
             case 'active':
                 context.fillStyle = 'rgba(255, 0, 0, 0.6)';
@@ -136,10 +130,10 @@ export class ImgMapComponent implements OnInit, AfterViewInit {
      * Check if a position is inside a marker.
      */
     private insideMarker(pixel: number[], coordinate: number[]): boolean {
-        return Math.sqrt(
-            (coordinate[0] - pixel[0]) * (coordinate[0] - pixel[0])
-            + (coordinate[1] - pixel[1]) * (coordinate[1] - pixel[1])
-        ) < this.markerRadius;
+        return pixel[0] >= coordinate[0]
+            && pixel[1] <= coordinate[0]
+            && pixel[2] >= coordinate[1]
+            && pixel[3] <= coordinate[1];
     }
 
     /**
@@ -149,7 +143,9 @@ export class ImgMapComponent implements OnInit, AfterViewInit {
         const image: HTMLImageElement = this.image.nativeElement;
         return [
             (image.clientWidth / 100) * marker[0],
-            (image.clientHeight / 100) * marker[1]
+            (image.clientWidth / 100) * marker[1],
+            (image.clientHeight / 100) * marker[2],
+            (image.clientHeight / 100) * marker[3]
         ];
     }
 
