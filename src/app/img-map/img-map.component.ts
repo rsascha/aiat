@@ -33,7 +33,6 @@ export class ImgMapComponent implements OnInit, AfterViewInit {
         this.markerActive = null;
         this.markerHover = null;
         this.markers = markers;
-        //this.draw();
     }
 
     /**
@@ -77,14 +76,9 @@ export class ImgMapComponent implements OnInit, AfterViewInit {
     constructor(private renderer: Renderer) { }
 
     ngOnInit() {
-        console.log('canvas: ', this.canvas);
-        console.log('container: ', this.container);
     }
 
     ngAfterViewInit(): void {
-        this.draw();
-        console.log('canvas: ', this.canvas);
-        console.log('container: ', this.container);
     }
 
     private change(): void {
@@ -142,12 +136,12 @@ export class ImgMapComponent implements OnInit, AfterViewInit {
      */
     private markerToPixel(marker: number[]): number[] {
         const image: HTMLImageElement = this.image.nativeElement;
-        return [
-            (image.clientWidth / 100) * marker[0],
-            (image.clientWidth / 100) * marker[1],
-            (image.clientHeight / 100) * marker[2],
-            (image.clientHeight / 100) * marker[3]
-        ];
+        const pixel = [];
+        pixel[0] = (image.clientWidth / 100) * marker[0];
+        pixel[1] = (image.clientWidth / 100) * marker[1];
+        pixel[2] = (image.clientHeight / 100) * marker[2];
+        pixel[3] = (image.clientHeight / 100) * marker[3];
+        return pixel;
     }
 
     /**
@@ -155,10 +149,12 @@ export class ImgMapComponent implements OnInit, AfterViewInit {
      */
     private pixelToMarker(pixel: number[]): number[] {
         const image: HTMLImageElement = this.image.nativeElement;
-        return [
-            (pixel[0] / image.clientWidth) * 100,
-            (pixel[1] / image.clientHeight) * 100
-        ];
+        const marker = [];
+        marker[0] = (pixel[0] / image.clientWidth) * 100;
+        marker[0] = (pixel[1] / image.clientWidth) * 100;
+        marker[0] = (pixel[2] / image.clientHeight) * 100;
+        marker[0] = (pixel[3] / image.clientHeight) * 100;
+        return marker;
     }
 
     /**

@@ -25,9 +25,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
         console.log('ngAfterViewInit');
         this.test.onClick = (event) => {
-            console.log(event);
+            console.log('click', event);
         }
     }
 
+    imgMapChanged(event) {
+        console.log('change: ', event);
+    }
 
+    imgMapMark(event) {
+        console.log('mark: ', event);
+    }
 }

@@ -1,4 +1,5 @@
-<div #container class="img-map" (window:resize)="onResize($event)">
+<div #container class="img-map" (window:resize)="onResize($event)" (change)="imgMapChanged($event)"
+    (mark)="imgMapMark($event)">
     <img #image [src]="src" (load)="onLoad($event)">
     <canvas #canvas (click)="onClick($event)" (mousemove)="onMousemove($event)"
         (mouseout)="onMouseout($event)"></canvas>
