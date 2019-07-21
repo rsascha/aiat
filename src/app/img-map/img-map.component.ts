@@ -1,5 +1,6 @@
 import {
-    Component, OnInit, ElementRef, EventEmitter, Input, Output, Renderer, ViewChild, AfterViewInit
+    Component, OnInit, ElementRef, EventEmitter, Input,
+    Output, Renderer, ViewChild, AfterViewInit
 } from '@angular/core';
 
 @Component({
